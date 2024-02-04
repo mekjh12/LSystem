@@ -82,7 +82,21 @@
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="EngineLoop.cs" />
+    <Compile Include="Form3L.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3L.Designer.cs">
+      <DependentUpon>Form3L.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStochastic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStochastic.Designer.cs">
+      <DependentUpon>FormStochastic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IniFile.cs" />
     <Compile Include="Input\Mouse.cs" />
+    <Compile Include="LoaderLSystem.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Form1.cs">
@@ -90,12 +104,6 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form3D.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form3D.Designer.cs">
-      <DependentUpon>Form3D.cs</DependentUpon>
     </Compile>
     <Compile Include="Camera\FPSCamera.cs" />
     <Compile Include="FramePerSecond.cs" />
@@ -114,11 +122,16 @@
     <Compile Include="Model\TangentSpace.cs" />
     <Compile Include="Model\Texture.cs" />
     <Compile Include="Model\TexturedModel.cs" />
+    <Compile Include="LSystemStochastic.cs" />
+    <Content Include="Rules\bushlike2.txt" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3D.resx">
-      <DependentUpon>Form3D.cs</DependentUpon>
+    <EmbeddedResource Include="Form3L.resx">
+      <DependentUpon>Form3L.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStochastic.resx">
+      <DependentUpon>FormStochastic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,6 +155,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Rules\bushlike1.txt" />
+    <None Include="Rules\bushlike1.rul" />
+    <None Include="Rules\bushlike2.rul" />
+    <None Include="setup.ini" />
     <None Include="Shader\static.frag" />
     <None Include="Shader\static.vert" />
   </ItemGroup>

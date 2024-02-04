@@ -34,12 +34,21 @@ namespace LSystem
                 Gl.TexParameteri(TextureTarget.Texture2d, TextureParameterName.TextureWrapT, Gl.REPEAT);
             }
 
-            shader.LoadObjectColor(entity.Material.Ambient);
+            if (entity.Material != null) shader.LoadObjectColor(entity.Material.Ambient);
             shader.LoadProjMatrix(camera.ProjectiveMatrix);
             shader.LoadViewMatrix(camera.ViewMatrix);
             shader.LoadModelMatrix(entity.ModelMatrix);
 
-            Gl.DrawArrays(PrimitiveType.Triangles, 0, entity.Model.VertexCount);
+            if (entity.PrimitiveType == PrimitiveType.Lines)
+            {
+                Gl.LineWidth(entity.LineWidth);
+            }
+            else
+            {
+                Gl.LineWidth(1.0f);
+            }
+
+            Gl.DrawArrays(entity.PrimitiveType, 0, entity.Model.VertexCount);
 
             Gl.DisableVertexAttribArray(2);
             Gl.DisableVertexAttribArray(1);

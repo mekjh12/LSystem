@@ -60,6 +60,21 @@ namespace LSystem
             return mat;
         }
 
+        public static Vertex3f ForwardVector(this Matrix4x4f mat)
+        {
+            return new Vertex3f(mat[2, 0], mat[2, 1], mat[2, 2]).Normalized;
+        }
+
+        public static Vertex3f UpVector(this Matrix4x4f mat)
+        {
+            return new Vertex3f(mat[1, 0], mat[1, 1], mat[1, 2]).Normalized;
+        }
+
+        public static Vertex3f LeftVector(this Matrix4x4f mat)
+        {
+            return new Vertex3f(mat[0, 0], mat[0, 1], mat[0, 2]).Normalized;
+        }
+
         public static Matrix4x4f CreateViewMatrix(Vertex3f pos, Vertex3f right, Vertex3f up, Vertex3f forward)
         {
             Matrix4x4f view = Matrix4x4f.Identity;
@@ -115,7 +130,7 @@ namespace LSystem
         /// <param name="quaternion"></param>
         /// <param name="q"></param>
         /// <returns></returns>
-        public static OpenGL.Quaternion Concatenate(this OpenGL.Quaternion quaternion, OpenGL.Quaternion q)
+        public static Quaternion Concatenate(this Quaternion quaternion, Quaternion q)
         {
             //순서는 q2.Concatenate(q1)의 의미는 q1을 적용한 후에 q2를 적용한다.
             float s1 = quaternion.W;
@@ -125,6 +140,11 @@ namespace LSystem
             float s = s1 * s2 - v1.Dot(v2);
             Vertex3f v = v1 * s2 + v2 * s1 + v1.Cross(v2);
             return new Quaternion(v.x, v.y, v.z, s);
+        }
+
+        public static Quaternion Rotate(this Vertex3f axis, float degree)
+        {
+            return new Quaternion(axis, degree);
         }
     }
 }

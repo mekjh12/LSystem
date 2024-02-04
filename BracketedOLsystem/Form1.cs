@@ -27,7 +27,7 @@ namespace LSystem
         private void button1_Click(object sender, EventArgs e)
         {
             _lSystem = new LSystem();
-            _lSystem.Init(n: (int)nbrNum.Value, delta: (float)nbrDelta.Value);
+            //_lSystem.Init(n: (int)nbrNum.Value, delta: (float)nbrDelta.Value);
             _lSystem.LoadProductions(this.tbGrammer.Text);
             _lSystem.Render(this.pictureBox1.CreateGraphics(),
                 axiom: this.tbAxiom.Text,
@@ -41,7 +41,7 @@ namespace LSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _lSystem.Init(n: (int)nbrNum.Value, delta: (float)nbrDelta.Value);
+            //_lSystem.Init(n: (int)nbrNum.Value, delta: (float)nbrDelta.Value);
             _lSystem.LoadProductions(this.tbGrammer.Text);
             _lSystem.RenderRndColorRewriting(this.pictureBox1.CreateGraphics(),
                 axiom: this.tbAxiom.Text,

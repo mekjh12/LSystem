@@ -106,6 +106,16 @@ namespace LSystem
             _shininess = 32.0f;
         }
 
+        public Material(float r, float g, float b, float a)
+        {
+            Vertex4f color = new Vertex4f(r, g, b, a);
+            _ambient = color;
+            _specular = color;
+            _emissive = color;
+            _shininess = 32.0f;
+        }
+
+
         /// <summary>
         /// Shininess가 0부터 무한대의 값을 갖는다.
         /// 큰 값을 가지면 표면이 매끄러으므로 중심부에 빛이 모여있고 

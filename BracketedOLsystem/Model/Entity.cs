@@ -11,9 +11,13 @@ namespace LSystem
         protected RawModel3d _model;
         protected OpenGL.Quaternion _quaternion = OpenGL.Quaternion.Identity;
         protected Material _material;
+        protected PrimitiveType _primitiveType;
+        protected float _lineWidth = 1.0f;
 
         Vertex3f _position;
         Vertex3f _scale;
+
+        public PrimitiveType PrimitiveType => _primitiveType;
 
         public uint OBJECT_GUID => _guid;
 
@@ -22,6 +26,13 @@ namespace LSystem
             get => _name;
             set => _name = value;
         }
+
+        public float LineWidth
+        {
+            get =>_lineWidth; 
+            set => _lineWidth = value;
+        }
+
         public RawModel3d Model
         {
             get => _model;
@@ -61,8 +72,9 @@ namespace LSystem
             set => _textured = value;
         }
 
-        public Entity(RawModel3d rawModel3D, string name = "")
+        public Entity(RawModel3d rawModel3D, PrimitiveType primitiveType = PrimitiveType.Triangles, string name = "")
         {
+            _primitiveType = primitiveType;
             _guid = GUID.GenID;
             _scale = Vertex3f.One;
             _position = Vertex3f.Zero;
